@@ -13,13 +13,20 @@ with open('elves.txt') as f:
             calories_individual += int(line.strip())
 
 df = pandas.DataFrame(calories_per_elves, columns=["Calories"])
-#df.index.name = "Elf index" #https://stackoverflow.com/a/37968994
-#df.index += 1 #starting index at 1
 
-# most_calories = df[df['Calories']==df['Calories'].max()]
-# print(most_calories)
-print(f"The Elf with the most calories is carrying {df['Calories'].max()} calories.\n")
+top_1 = df['Calories'].max()
+print(f"The Elf with the most calories is carrying {top_1} calories.\n")
 
 top_3 = df.nlargest(3, 'Calories')
 top_3_sum = top_3.sum().values[0]
 print(f"The top 3 Elves are carrying a total of {top_3_sum} calories.")
+
+
+#Naming the index column
+#df.index.name = "Elf index" #https://stackoverflow.com/a/37968994
+
+#starting index at 1
+#df.index += 1 
+
+#Displaying the entire Series with the most calories
+# most_calories = df[df['Calories']==df['Calories'].max()]
